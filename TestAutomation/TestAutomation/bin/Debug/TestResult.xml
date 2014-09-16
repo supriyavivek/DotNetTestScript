@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Users\Supriya\Documents\Visual Studio 2013\Projects\TestAutomation\TestAutomation\bin\Debug\TestAutomation.dll" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-09-16" time="12:44:23">
+  <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5477" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Users\Supriya\documents\visual studio 2013\Projects\TestAutomation\TestAutomation\bin\Debug" machine-name="IPSUPRIYAV" user="Supriya" user-domain="IPSUPRIYAV" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="Assembly" name="C:\Users\Supriya\Documents\Visual Studio 2013\Projects\TestAutomation\TestAutomation\bin\Debug\TestAutomation.dll" executed="True" result="Success" success="True" time="14.811" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="TestAutomation" executed="True" result="Success" success="True" time="14.805" asserts="0">
+        <results>
+          <test-suite type="TestFixture" name="Driver" executed="True" result="Success" success="True" time="14.804" asserts="0">
+            <results>
+              <test-case name="TestAutomation.Driver.TestMethod1" executed="True" result="Success" success="True" time="14.799" asserts="1" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
