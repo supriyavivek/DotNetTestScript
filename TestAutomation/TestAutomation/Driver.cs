@@ -35,7 +35,7 @@ namespace TestAutomation
             driver.Navigate().GoToUrl("http://www.google.com");
             IWebElement ele=driver.FindElement(By.Name("q"));
             ele.SendKeys("selenium");
-            ele.Submit();
+            ele.SendKeys(Keys.Enter);
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
             wait.Until((d) => { return d.Title.StartsWith("selenium"); });
             Assert.AreEqual("selenium - Google Search", driver.Title);

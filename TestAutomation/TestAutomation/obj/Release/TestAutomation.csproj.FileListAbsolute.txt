@@ -1,0 +1,15 @@
+D:\indpro-c-sharp\TestAutomation\TestAutomation\bin\Release\TestAutomation.dll.config
+D:\indpro-c-sharp\TestAutomation\TestAutomation\bin\Release\TestAutomation.dll
+D:\indpro-c-sharp\TestAutomation\TestAutomation\bin\Release\TestAutomation.pdb
+D:\indpro-c-sharp\TestAutomation\TestAutomation\bin\Release\Moq.dll
+D:\indpro-c-sharp\TestAutomation\TestAutomation\bin\Release\nunit.framework.dll
+D:\indpro-c-sharp\TestAutomation\TestAutomation\bin\Release\TechTalk.SpecFlow.dll
+D:\indpro-c-sharp\TestAutomation\TestAutomation\bin\Release\WebDriver.dll
+D:\indpro-c-sharp\TestAutomation\TestAutomation\bin\Release\WebDriver.Support.dll
+D:\indpro-c-sharp\TestAutomation\TestAutomation\bin\Release\Moq.xml
+D:\indpro-c-sharp\TestAutomation\TestAutomation\bin\Release\nunit.framework.xml
+D:\indpro-c-sharp\TestAutomation\TestAutomation\bin\Release\WebDriver.xml
+D:\indpro-c-sharp\TestAutomation\TestAutomation\bin\Release\WebDriver.Support.xml
+D:\indpro-c-sharp\TestAutomation\TestAutomation\obj\Release\TestAutomation.csprojResolveAssemblyReference.cache
+D:\indpro-c-sharp\TestAutomation\TestAutomation\obj\Release\TestAutomation.dll
+D:\indpro-c-sharp\TestAutomation\TestAutomation\obj\Release\TestAutomation.pdb
