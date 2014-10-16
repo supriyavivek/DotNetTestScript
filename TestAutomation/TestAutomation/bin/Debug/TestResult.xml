@@ -1,18 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="D:\indpro-c-sharp\TestAutomation\TestAutomation\bin\Debug\TestAutomation.dll" total="4" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-10-14" time="16:19:18">
+<test-results name="D:\indpro-c-sharp\TestAutomation\TestAutomation\bin\Debug\TestAutomation.dll" total="6" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-10-16" time="10:48:49">
   <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5477" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="D:\indpro-c-sharp\TestAutomation\TestAutomation\bin\Debug" machine-name="IPSUPRIYAV" user="Supriya" user-domain="IPSUPRIYAV" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="D:\indpro-c-sharp\TestAutomation\TestAutomation\bin\Debug\TestAutomation.dll" executed="True" result="Success" success="True" time="13.368" asserts="0">
+  <test-suite type="Assembly" name="D:\indpro-c-sharp\TestAutomation\TestAutomation\bin\Debug\TestAutomation.dll" executed="True" result="Success" success="True" time="21.495" asserts="0">
     <results>
-      <test-suite type="Namespace" name="TestAutomation" executed="True" result="Success" success="True" time="13.362" asserts="0">
+      <test-suite type="Namespace" name="TestAutomation" executed="True" result="Success" success="True" time="21.489" asserts="0">
         <results>
-          <test-suite type="TestFixture" name="Driver" executed="True" result="Success" success="True" time="13.361" asserts="0">
+          <test-suite type="TestFixture" name="Driver" executed="True" result="Success" success="True" time="21.488" asserts="0">
             <results>
-              <test-case name="TestAutomation.Driver.test1Login" executed="True" result="Success" success="True" time="6.027" asserts="0" />
-              <test-case name="TestAutomation.Driver.test2AddTasks" executed="True" result="Success" success="True" time="2.524" asserts="4" />
-              <test-case name="TestAutomation.Driver.test3EditTask" executed="True" result="Success" success="True" time="1.302" asserts="3" />
-              <test-case name="TestAutomation.Driver.test4DeleteTaskAndCustomer" executed="True" result="Success" success="True" time="3.489" asserts="1" />
+              <test-case name="TestAutomation.Driver.test1Login" executed="True" result="Success" success="True" time="11.117" asserts="0" />
+              <test-case name="TestAutomation.Driver.test2AddTasks" executed="True" result="Success" success="True" time="2.261" asserts="4" />
+              <test-case name="TestAutomation.Driver.test3EditTask" executed="True" result="Success" success="True" time="1.276" asserts="3" />
+              <test-case name="TestAutomation.Driver.test4CompleteTask" executed="True" result="Success" success="True" time="1.895" asserts="4" />
+              <test-case name="TestAutomation.Driver.test5DeleteTaskAndCustomer" executed="True" result="Success" success="True" time="1.728" asserts="1" />
+              <test-case name="TestAutomation.Driver.test6TimeTrack" executed="True" result="Success" success="True" time="3.190" asserts="5" />
             </results>
           </test-suite>
         </results>

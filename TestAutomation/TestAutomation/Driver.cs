@@ -14,6 +14,8 @@ namespace TestAutomation
     public class Driver
     {
         IWebDriver driver;
+        IAlert alert;
+        String alertMsg;
 
         //[SetUp]
         //public void Setup()
@@ -106,10 +108,8 @@ namespace TestAutomation
             IWebElement saveChanges = driver.FindElement(By.XPath(".//input[@value='Save Changes']"));
             saveChanges.Click();
 
-            IWebElement changesSaved = driver.FindElement(By.XPath(".//*[@id='SuccessMessages']/tbody/tr/td/span"));
-            String successMessage=changesSaved.Text;
-            Assert.AreEqual("Your changes have been saved.", successMessage);
-          
+            SuccessMsg("Your changes have been saved.");
+                      
             IWebElement clickOnEnterComment = driver.FindElement(By.XPath(".//*[@id='content']/table/tbody/tr[4]/td/table[1]/tbody/tr/td[2]/a"));
             clickOnEnterComment.Click();
 
@@ -133,10 +133,70 @@ namespace TestAutomation
         }
 
         [Test]
-        public void test4DeleteTaskAndCustomer()
+        public void test4CompleteTask()
         {
             driver.Manage().Timeouts().ImplicitlyWait(new TimeSpan(0, 0, 30));
-            IWebElement deleteTaskButton=driver.FindElement(By.ClassName("hierarchy_element_wide_button"));
+
+            IWebElement openTask = driver.FindElement(By.LinkText("Open Tasks"));
+            openTask.Click();
+
+            IWebElement selectTask = driver.FindElement(By.XPath("//input[@type='checkbox']"));
+            selectTask.Click();
+
+            IWebElement completeTaskButton = driver.FindElement(By.XPath("//input[@value='Complete Selected Tasks']"));
+            completeTaskButton.Click();
+
+            SuccessMsg("Selected tasks have been successfully completed.");
+
+            IWebElement archiveProject = driver.FindElement(By.ClassName("hierarchy_element_wide_button"));
+            archiveProject.Click();
+
+            AlertMsg("Are you sure you want to archive selected project?");
+
+            IWebElement archivesTab = driver.FindElement(By.LinkText("Archives"));
+            archivesTab.Click();
+
+            IWebElement selectCustomer = driver.FindElement(By.XPath("//input[contains(@name, 'customers')]"));
+            selectCustomer.Click();
+
+            IWebElement selectProject = driver.FindElement(By.XPath("//input[contains(@name, 'projects')]"));
+            selectProject.Click();
+
+            IWebElement restoreFromArchive = driver.FindElement(By.XPath("//input[@value='Restore Selected From Archives']"));
+            restoreFromArchive.Click();
+            
+            AlertMsg("Are you sure you want to restore selected customers and projects?");
+            
+            SuccessMsg("Selected customers and projects have been successfully restored from archives.");
+        }
+
+        private void SuccessMsg(String expMsg)
+        {
+            IWebElement successMsg = driver.FindElement(By.XPath(".//*[@id='SuccessMessages']/tbody/tr/td/span"));
+            String msg = successMsg.Text;
+            Assert.AreEqual(expMsg, msg);
+        }
+
+        private void AlertMsg(String expMsg)
+        {
+            alert = driver.SwitchTo().Alert();
+            alertMsg = alert.Text;
+            Assert.AreEqual(expMsg, alertMsg);
+            alert.Accept();
+        }
+
+        [Test]
+        public void test5DeleteTaskAndCustomer()
+        {
+            driver.Manage().Timeouts().ImplicitlyWait(new TimeSpan(0, 0, 30));
+
+            IWebElement completedTaskTAb = driver.FindElement(By.LinkText("Completed Tasks"));
+            completedTaskTAb.Click();
+
+            IWebElement selectTask = driver.FindElement(By.XPath("//input[contains(@name, 'taskSelected')]"));
+            selectTask.Click();
+
+            IWebElement deleteTaskButton=driver.FindElement(By.XPath("//input[@value='Delete Selected Tasks']"));
             deleteTaskButton.Click();
 
             IWebElement deleteTask = driver.FindElement(By.Id("deleteButton"));
@@ -154,14 +214,83 @@ namespace TestAutomation
             IWebElement delete = driver.FindElement(By.Id("deleteButton"));
             delete.Click();
 
-            IWebElement successMsg = driver.FindElement(By.XPath(".//*[@id='SuccessMessages']/tbody/tr/td/span"));
-            String msg=successMsg.Text;
-            Assert.AreEqual("Selected customers and projects have been successfully deleted.", msg);
+            SuccessMsg("Selected customers and projects have been successfully deleted.");
+        }
 
+        private void Logout()
+        {
             IWebElement logout = driver.FindElement(By.Id("logoutLink"));
             logout.Click();
-
             driver.Quit();
+        }
+
+        [Test]
+        public void test6TimeTrack()
+        {
+            driver.Manage().Timeouts().ImplicitlyWait(new TimeSpan(0, 0, 30));
+
+            IWebElement timeTrack = driver.FindElement(By.LinkText("Time-Track"));
+            timeTrack.Click();
+
+            String mainWindow = driver.CurrentWindowHandle;
+
+            IWebElement newLink = driver.FindElement(By.XPath("//span[text()='New']"));
+            newLink.Click();
+
+            int count=driver.WindowHandles.Count;
+           
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+            //for(int i=count; i<=count; i++)
+            //{
+            //    String windowTitle=driver.Title;
+                
+            //    if (windowTitle.Equals("actiTIME -  Create New Tasks"))
+            //    {
+            //        driver.SwitchTo().Window(windowTitle);
+            //        driver.Close();
+            //        break;
+            //    }              
+            //}
+            Assert.AreEqual(2, count);
+
+            IWebElement customerName = driver.FindElement(By.Name("customerName"));
+            customerName.SendKeys("Customer Name");
+
+            IWebElement projectName = driver.FindElement(By.Name("projectName"));
+            projectName.SendKeys("Project Name");
+
+            IWebElement taskName = driver.FindElement(By.Id("task[0].name"));
+            taskName.SendKeys("Task Name");
+
+            IWebElement createTasks = driver.FindElement(By.XPath("//input[@value='Create Tasks']"));
+
+            createTasks.Click();
+
+            driver.SwitchTo().Window(mainWindow);
+
+            IWebElement custSuccessMsg = driver.FindElement(By.XPath(".//*[@id='SuccessMessages']/tbody/tr[1]/td/span"));
+            String cMsg = custSuccessMsg.Text;
+            Assert.AreEqual("Customer \"Customer Name\" was created.", cMsg);
+
+            IWebElement projSuccessMsg = driver.FindElement(By.XPath(".//*[@id='SuccessMessages']/tbody/tr[2]/td/span"));
+            String pMsg = projSuccessMsg.Text;
+            Assert.AreEqual("Project \"Project Name\" was created.", pMsg);
+
+            IWebElement taskSuccessMsg = driver.FindElement(By.XPath(".//*[@id='SuccessMessages']/tbody/tr[3]/td/span"));
+            String tMsg = taskSuccessMsg.Text;
+            Assert.AreEqual("1 new task was added to the customer \"Customer Name\", project \"Project Name\".", tMsg);
+
+            IWebElement enterTimTrackSuccessMsg = driver.FindElement(By.XPath(".//*[@id='SuccessMessages']/tbody/tr[4]/td/span"));
+            String eMsg = enterTimTrackSuccessMsg.Text;
+            Assert.AreEqual("Task was successfully added to the Enter Time-Track page.", eMsg);
+
+            IList<IWebElement> timeLine = driver.FindElements(By.XPath("//input[contains(@id, 'spent')]"));
+            for (int i = 0; i < timeLine.Count; i++)
+            {
+                timeLine[i].SendKeys("8");
+            }
+            
+            Logout();
         }
     }
 }
