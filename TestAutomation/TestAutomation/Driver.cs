@@ -17,19 +17,6 @@ namespace TestAutomation
         IAlert alert;
         String alertMsg;
 
-        //[SetUp]
-        //public void Setup()
-        //{
-           
-        //    driver.Manage().Timeouts().ImplicitlyWait(new TimeSpan(0, 0, 30));
-        //}
-
-        //[TearDown]
-        //public void Teardown()
-        //{
-        //    driver.Quit();
-        //}
-
         [Test]
         public void test1Login()
         {
@@ -170,21 +157,6 @@ namespace TestAutomation
             SuccessMsg("Selected customers and projects have been successfully restored from archives.");
         }
 
-        private void SuccessMsg(String expMsg)
-        {
-            IWebElement successMsg = driver.FindElement(By.XPath(".//*[@id='SuccessMessages']/tbody/tr/td/span"));
-            String msg = successMsg.Text;
-            Assert.AreEqual(expMsg, msg);
-        }
-
-        private void AlertMsg(String expMsg)
-        {
-            alert = driver.SwitchTo().Alert();
-            alertMsg = alert.Text;
-            Assert.AreEqual(expMsg, alertMsg);
-            alert.Accept();
-        }
-
         [Test]
         public void test5DeleteTaskAndCustomer()
         {
@@ -215,14 +187,7 @@ namespace TestAutomation
             delete.Click();
 
             SuccessMsg("Selected customers and projects have been successfully deleted.");
-        }
-
-        private void Logout()
-        {
-            IWebElement logout = driver.FindElement(By.Id("logoutLink"));
-            logout.Click();
-            driver.Quit();
-        }
+        }  
 
         [Test]
         public void test6TimeTrack()
@@ -291,6 +256,28 @@ namespace TestAutomation
             }
             
             Logout();
+        }
+
+        private void Logout()
+        {
+            IWebElement logout = driver.FindElement(By.Id("logoutLink"));
+            logout.Click();
+            driver.Quit();
+        }
+
+        private void SuccessMsg(String expMsg)
+        {
+            IWebElement successMsg = driver.FindElement(By.XPath(".//*[@id='SuccessMessages']/tbody/tr/td/span"));
+            String msg = successMsg.Text;
+            Assert.AreEqual(expMsg, msg);
+        }
+
+        private void AlertMsg(String expMsg)
+        {
+            alert = driver.SwitchTo().Alert();
+            alertMsg = alert.Text;
+            Assert.AreEqual(expMsg, alertMsg);
+            alert.Accept();
         }
     }
 }
